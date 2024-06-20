@@ -1,0 +1,5 @@
+service_name: "s3"
+region_name: "ap-northeast-2"
+access_key: AWS의 accesskey를 입력해주세요.
+secret_key: AWS의 secretkey를 입력해주세요.
+bucket_name: AWS 버킷 이름을 입력해주세요.

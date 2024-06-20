@@ -1,0 +1,33 @@
+.service-name {
+    font-family: "Archivo Black", sans-serif;
+    /* font-weight: 400; */
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.dash {
+    letter-spacing: 10px;
+    font-weight: bold;
+    color: blue;
+}
+
+
+p {
+    font-weight: bold;
+}
+
+body {
+    background-image: url(../images/templatemo-wave-banner.jpg), linear-gradient(#348CD2, #FFFFFF);
+    margin: 0;
+    padding: 0;
+}
+
+.index-section {
+    padding-top: 200px;
+}
+
+.btn {
+    border-color: rgb(217, 232, 245);
+    color: rgb(151, 151, 200);
+    background-color: rgb(217, 232, 245);
+}

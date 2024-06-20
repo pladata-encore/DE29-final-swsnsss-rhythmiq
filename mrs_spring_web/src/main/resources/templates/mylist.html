@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>RhythmiQ - Create playlists on the go, dive into new favorites.</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../static/css/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+
+    <link href="../static/css/templatemo-pod-talk.css" rel="stylesheet">
+    <link href="../static/css/mylist.css" rel="stylesheet">
+    <!--
+
+TemplateMo 584 Pod Talk
+e
+https://templatemo.com/tm-584-pod-talk
+
+-->
+</head>
+
+<body>
+    <div class="spinner-wrapper">
+        <div class="text-center">
+            <div class="spinner-border text-dark" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    </div>
+    <main>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand me-lg-auto me-0" href="/user/main">
+                    <span class="logo-text"><span class="logo-dash">//</span>RhythmiQ</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle"></i> <span class="username">{{username}}</span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/user/mylists">저장된 플레이리스트</a></li>
+                                <li><a class="dropdown-item" href="/logout">로그아웃</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="deleteuser()">회원탈퇴</a></li>
+                            </ul>
+                            <ul class="list-unstyled d-lg-none">
+                                <li><a class="dropdown-item" href="/user/mylists">저장된 플레이리스트</a></li>
+                                <li><a class="dropdown-item" href="/logout">로그아웃</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="deleteuser()">회원탈퇴</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <header class="site-header d-flex flex-column justify-content-center align-items-center">
+            <div class="container">
+                <!-- <div class="row">
+                </div> -->
+            </div>
+        </header>
+
+
+        <section class="about-section section-padding" id="section_2">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-8 col-12 mx-auto">
+                        <div class="pb-5 mb-5">
+                            <div class="section-title-wrap mb-4">
+                                <h4 class="section-title">Saved Playlist</h4>
+                            </div>
+
+                        </div>
+
+
+                        <div class="container">
+                            <ul class="list-group mt-3">
+                                {{#playlists}}
+                                <li class="list-group-item mylist-list-group-item"
+                                    onclick="showplaylistpage('{{playlistTracks}}', '{{playlistThemes}}', '{{playlistEnThemes}}', '{{playlistCoverSrc}}')">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{playlistCoverSrc}}" alt="앨범 커버" class="album-cover mr-3">
+                                        <div>
+                                            <div>
+                                                {{#parsedThemes}}
+                                                <button id="themeButton" class="btn btn-primary ml-3">{{.}}</button>
+                                                {{/parsedThemes}}
+                                            </div>
+                                            <div><span>{{playlistTracksCount}}곡, {{playlistDuration}}</span></div>
+                                            <input id="playlist{{playlistId}}" type="hidden" value="{{playlistTracks}}">
+                                        </div>
+                                        <div class="icon d-inline-block" style="margin-top:5px; margin-bottom: 10px;">
+                                            <!-- <i id="playIcon" class="bi bi-play-circle clickable"
+                                                style="font-size: 1.3em; margin-right: 6px;" data-toggle="tooltip"
+                                                title="플레이리스트 재생"
+                                                onclick="showplaylistpage('{{playlistTracks}}', '{{playlistThemes}}', '{{playlistEnThemes}}','{{playlistCoverSrc}}')"></i>
+                                            <i id="downloadIcon" class="bi bi-download clickable"
+                                                style="font-size: 1.3em; margin-right: 6px;" data-toggle="tooltip"
+                                                title="스포티파이에 플레이리스트 저장"></i> -->
+                                            <i id="deleteIcon" class="bi bi-trash clickable" style="font-size: 1.3em;"
+                                                data-toggle="tooltip" title="플레이리스트 삭제"
+                                                onclick="confirmDelete('{{playlistId}}', event)"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                                {{/playlists}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <footer class="site-footer">
+        <div class="container">
+            Copyright © Data-engineering 29th, Team 3
+        </div>
+    </footer>
+
+
+
+
+
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/owl.carousel.min.js"></script>
+    <script src="../static/js/custom.js"></script>
+    <script src="../static/js/mylist.js"></script>
+
+</body>
+
+</html>

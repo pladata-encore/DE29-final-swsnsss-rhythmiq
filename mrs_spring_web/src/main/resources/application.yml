@@ -1,0 +1,93 @@
+server:
+  servlet:
+    encoding:
+      # 한글깨짐 처리 
+      force-response: true
+
+
+
+# Spring Data Source 설정 
+spring:
+
+  output:
+    ansi:
+      enabled: always
+  
+  # 데이터 베이스 
+  datasource:
+    url: jdbc:mysql://anonyqdatabase.cqqwfl3a6ugn.ap-northeast-2.rds.amazonaws.com:3306/mrs?&serverTimezone=Asia/Seoul
+    username: admin
+    password: anonyq0317
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  #  데이터 베이스 커넥션 
+  jpa:
+    hibernate:
+      ddl-auto: update 
+    properties:
+      hibernate:
+        show_sql: true 
+        format_sql: true
+
+  # 2024-03-13T19:48:26.348+09:00  WARN 21416 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+  # 이 오류때문에     
+  # yang 추가  
+    open-in-view: false
+
+  # mustache (1. 루트폴더 변경, 2. 타임리프 캐시 설정 변경)
+  mustache:
+    prefix: classpath:templates/
+    check-template-location: true
+    suffix: .html
+    servlet:
+        cache: false
+
+  mvc:
+    static-path-pattern: /static/**
+  
+  security:
+      oauth2:
+          client:
+            registration :
+              spotify:
+                client-id: 스포티파이 앱의 clientid를 입력해주세요.
+                client-secret: 스포티파이 앱의 clientsecret을 입력해주세요.
+                client-authentication-method : client_secret_basic
+                redirect-uri : 스포티파이 앱의 redirecturi를 입력해주세요.
+                authorization-grant-type : authorization_code
+                scope:
+                - user-read-private
+                - user-read-email
+                - playlist-read-private
+                - playlist-read-collaborative
+                - playlist-modify-private
+                - playlist-modify-public
+                - user-read-playback-position
+                - user-top-read
+                - user-read-recently-played
+                - user-library-modify
+                - user-library-read
+                - user-follow-read
+                - user-modify-playback-state
+                - user-read-playback-state
+                - app-remote-control
+                - streaming
+                provider : spotify-provider
+            provider:
+              spotify-provider:
+                authorization-uri : https://accounts.spotify.com/authorize?show_dialog=true
+                token-uri : https://accounts.spotify.com/api/token
+                user-info-uri : https://api.spotify.com/v1/me
+                user-name-attribute : id
+cloud:
+  aws:
+    s3:
+      bucket: 플레이리스트 이미지를 저장할 AWS 버킷 명을 입력해주세요.
+    credentials:
+      access-key: AWS의 accesskey를 입력해주세요.
+      secret-key: AWS의 secretkey를 입력해주세요.
+    region:
+      static: ap-northeast-2
+      auto: false
+    stack:
+      auto: false
