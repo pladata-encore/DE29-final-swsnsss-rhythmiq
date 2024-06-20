@@ -15,9 +15,9 @@ spring:
   
   # 데이터 베이스 
   datasource:
-    url: jdbc:mysql://anonyqdatabase.cqqwfl3a6ugn.ap-northeast-2.rds.amazonaws.com:3306/mrs?&serverTimezone=Asia/Seoul
-    username: admin
-    password: anonyq0317
+    url: jdbc:mysql://localhost:3306/mrs?&serverTimezone=Asia/Seoul
+    username: 
+    password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   #  데이터 베이스 커넥션 
