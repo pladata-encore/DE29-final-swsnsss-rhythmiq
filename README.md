@@ -163,6 +163,5 @@ https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0 API 호출 방�
 
 >※ 배포시 Spring Boot, Flask의 buildspec.yml을 환경에 맞게 수정해주세요.
 
-## 참조문헌
 
 
