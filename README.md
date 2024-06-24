@@ -159,10 +159,6 @@ https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0 API 호출 방�
 4. AWS Route 53으로 각각의 Load Balencer DNS주소에 구입한 도메인 주소 할당
 5. AWS Certificate Manager로 도메인 주소에 SSL 인증
 
-접속 주소 (임시) - https://anonyq.site
 
 >※ 배포시 Spring Boot, Flask의 buildspec.yml을 환경에 맞게 수정해주세요.
-
-## 참조문헌
-
 
